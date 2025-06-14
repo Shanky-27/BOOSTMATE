@@ -7,5 +7,31 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 2px solid #444;
+  background-color: rgba(13, 17, 23, 0.6); /* 0.6 opacity */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* for Safari */
+}
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.footer-meta {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.footer-meta a {
+  color: #70c0ff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer-meta a:hover {
+  text-decoration: underline;
 }

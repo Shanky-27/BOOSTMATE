@@ -3,21 +3,31 @@
   margin: 5% auto;
   padding: 2rem;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08); 
+  backdrop-filter: blur(12px);         
+  -webkit-backdrop-filter: blur(12px);   /* Safari support */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   font-family: 'Segoe UI', sans-serif;
   text-align: center;
 }
 
 h2 {
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #f8b400;
 }
 
 .subtitle {
   margin-bottom: 1.5rem;
-  color: #777;
+  color: rgb(192, 192, 192);
   font-size: 0.95rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #f8b400;
+  box-shadow: 0 0 0 3px rgba(248, 180, 0, 0.3);
 }
 
 .register-form input {
@@ -32,7 +42,7 @@ h2 {
 .btn-primary {
   width: 100%;
   padding: 0.8rem;
-  background: #28a745;
+  background: #f8b400;
   color: white;
   border: none;
   border-radius: 4px;
@@ -41,7 +51,7 @@ h2 {
 }
 
 .btn-primary:hover {
-  background: #218838;
+  background: #d69d00;
 }
 
 .divider {

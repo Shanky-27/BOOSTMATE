@@ -1,0 +1,120 @@
+:root {
+  --primary-color: #f8b400;
+  --accent-color: #1e293b;
+  --text-color: #f1f5f9;
+  --border-color: #334155;
+  --radius: 10px;
+}
+
+.contact-container {
+border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari support */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 400px;
+  margin: 5% auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari support */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.contact-container h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  resize: vertical;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(248, 180, 0, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  background-color:#d99a00;
+  color: #0f172a;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #d99a00;
+}
+
+/* Thank You popup */
+.thank-you-popup {
+  max-width: 450px;
+  margin: 10% auto;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  text-align: center;
+  color: #d1fae5;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.thank-you-popup h3 {
+  font-size: 1.7rem;
+  margin-bottom: 0.6rem;
+  color: #86efac;
+}
+
+.thank-you-popup p {
+  font-size: 1.05rem;
+  color: #bbf7d0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contact-container,
+  .thank-you-popup {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}

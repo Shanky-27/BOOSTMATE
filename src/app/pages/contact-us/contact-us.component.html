@@ -1,0 +1,36 @@
+<div class="contact-container" *ngIf="!showThankYou">
+  <h2>Contact Us 📬</h2>
+
+  <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="name"
+      placeholder="Your Name"
+      required
+    />
+
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+      placeholder="Your Email"
+      required
+    />
+
+    <textarea
+      name="message"
+      [(ngModel)]="message"
+      placeholder="Your Message"
+      rows="5"
+      required
+    ></textarea>
+
+    <button type="submit" [disabled]="contactForm.invalid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="showThankYou" class="thank-you-popup">
+  <h3>Thank You! 🙏</h3>
+  <p>Your message has been received. We'll get back to you shortly.</p>
+</div>

@@ -1,6 +1,5 @@
-
 <div class="dashboard-container">
-  <h2>🚀 BoostMate Dashboard</h2>
+  <h2>BoostMate Dashboard</h2>
 
   <div class="input-group">
     <label for="niche">Enter your niche</label>
@@ -16,7 +15,6 @@
     <button (click)="generateContent()" [disabled]="loading || !niche.trim()">
       Generate Content
     </button>
-    <button class="logout" (click)="logout()">Logout</button>
   </div>
 
   <div *ngIf="loading" class="loading">
@@ -36,7 +34,6 @@
         <tr>
           <td>{{ item.icon }} {{ item.section }}</td>
           <td>
-            <!-- Captions block -->
             <div *ngIf="item.icon === '✍'">
               <p><strong>{{ item.title }}</strong></p>
               <div class="hashtag-container">
@@ -45,17 +42,18 @@
                 </span>
               </div>
             </div>
-
-            <!-- All other blocks -->
             <div *ngIf="item.icon !== '✍'">
               <strong *ngIf="item.title">{{ item.title }}:</strong> {{ item.text }}
             </div>
           </td>
           <td>
-            <ng-container *ngIf="item.audioUrl; else noAudio">
-              <a [href]="item.audioUrl" target="_blank" rel="noopener noreferrer">
-                Listen on Spotify
-              </a>
+            <ng-container *ngIf="item.audioUrl && isLink(item.audioUrl); else noAudio">
+              <a
+                [href]="item.audioUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Listen Here</a
+              >
             </ng-container>
             <ng-template #noAudio>
               <span *ngIf="item.icon === '🎧'">—</span>

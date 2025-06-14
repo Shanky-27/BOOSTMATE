@@ -21,26 +21,28 @@ Provide:
 2. 🎬 Viral content formats (short bullet points, one per line)
 3. ✍ Captions + hashtags (include 1 caption + 5–10 hashtags per category)
 4. 📅 Best time to post (bullet points with recommended time slots)
+5. the links for audio should point to youtube or youtube music which should be correct link 
 
 Make the output structured and consistent. Do NOT use Markdown (no **bold**, ## headings, etc.). Only use emoji icons (🎧, 🎬, ✍, 📅) to indicate categories.
 return a JSON object with the following structure:
 {
   "audios": [
     {
-      "title": "Golden Hour",
-      "artist": "JVKE",
-      "description": "Sped-up version, ideal for sunset scenes",
+      "title": "",
+      "artist": "",
+      "description": "",
+      "links":""
     },
     ...
   ],
-  "formats": ["Before you go guide", "Budget travel hacks", ...],
+  "formats": ["", "", ...],
   "captions": [
     {
-      "caption": "Golden hour in Bali 🌅 ...",
-      "hashtags": ["#travel", "#sunset", ...]
+      "caption": "",
+      "hashtags": ["", "", ...]
     }
   ],
-  "postingTimes": ["Monday: 10AM", "Friday: 3PM", ...]
+  "postingTimes": ["", "", ...]
 }
 
 Only return a valid JSON object, no extra commentary.`
@@ -51,6 +53,7 @@ Only return a valid JSON object, no extra commentary.`
     };
 
     const res = await axios.post(this.url, body);
+    console.log(res)
     return res.data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No result.';
   }
 }

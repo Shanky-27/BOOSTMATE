@@ -1,22 +1,20 @@
 <header class="header">
   <!-- Logo -->
   <div class="logo">
-    <img src="assets/logo.png" alt="BoostMate" width="32" />
-    BoostMate 🚀
+    <img src="/assets/image.png" alt="BoostMate"  style="border-radius: 10px; width: 50px; height: auto;" />
+    BoostMate
   </div>
-
-
 
   <!-- User Area -->
   <div class="user-section" *ngIf="user; else guestLinks">
     <img
-      *ngIf="user.photoURL"
+      *ngIf="user.photoURL; else defaultImg"
       [src]="user.photoURL"
       alt="Avatar"
       class="avatar"
+      (click)="togglePopup()"
+      style="cursor: pointer;"
     />
-    <span class="username">{{ user.displayName || user.email }}</span>
-    <button class="btn" (click)="logout()">Logout</button>
   </div>
 
   <!-- Guest Login/Signup -->
@@ -26,4 +24,36 @@
       <a href="/register" class="btn">Sign Up</a>
     </div>
   </ng-template>
+
+  <!-- Default avatar template -->
+  <ng-template #defaultImg>
+    <img
+      [src]="defaultAvatar"
+      alt="Default Avatar"
+      class="avatar"
+      (click)="togglePopup()"
+      style="cursor: pointer;"
+    />
+  </ng-template>
+
+  <!-- Custom Popup -->
+  <div class="user-popup" *ngIf="popupVisible">
+  <div class="popup-content">
+    <button class="close-btn" (click)="togglePopup()">×</button>
+    <img
+      *ngIf="user?.photoURL; else defaultPopupAvatar"
+      [src]="user?.photoURL"
+      alt="Avatar"
+      class="popup-avatar"
+    />
+    <ng-template #defaultPopupAvatar>
+      <img [src]="defaultAvatar" alt="Default Avatar" class="popup-avatar" />
+    </ng-template>
+    <h3>{{ user?.displayName || user?.email || 'User' }}</h3>
+    <p>{{ user?.email }}</p>
+    <a href="contact" class="btn-primary"><button >Contact Us</button></a>
+    <button class="logout-btn" (click)="logout(); togglePopup()">Logout</button>
+  </div>
+</div>
+
 </header>

@@ -34,7 +34,7 @@ export class DashboardComponent {
     this.loading = false;
   }
 
-parseResult(text: string): {
+  parseResult(text: string): {
     section: string;
     icon: string;
     title?: string;
@@ -49,21 +49,25 @@ parseResult(text: string): {
     let data;
     try {
       data = JSON.parse(rawJson);
+      console.log('Parsed data:', data);
     } catch (e) {
+      console.error('JSON parse error:', e);
       return [];
     }
 
     const result: any[] = [];
 
-    // 🎧 Audios with Spotify URLs
+    // 🎧 Audios with URLs
     if (Array.isArray(data.audios)) {
       for (const audio of data.audios) {
+        // Try multiple possible URL fields (adjust as needed)
+        const audioUrl = audio.spotifyUrl || audio.links || audio.url || '';
         result.push({
           section: 'Trending Audios',
           icon: '🎧',
-          title: audio.title,
-          text: audio.description,
-          audioUrl: audio.spotifyUrl // use spotifyUrl here
+          title: audio.title + (audio.artist ? ' - ' + audio.artist : ''),
+          text: audio.description || '',
+          audioUrl: audioUrl,
         });
       }
     }
@@ -74,7 +78,7 @@ parseResult(text: string): {
         result.push({
           section: 'Content Formats',
           icon: '🎬',
-          text: format
+          text: format,
         });
       }
     }
@@ -87,7 +91,7 @@ parseResult(text: string): {
           icon: '✍',
           title: cap.caption,
           text: '',
-          hashtags: cap.hashtags
+          hashtags: cap.hashtags,
         });
       }
     }
@@ -98,7 +102,7 @@ parseResult(text: string): {
         result.push({
           section: 'Posting Time',
           icon: '📅',
-          text: time
+          text: time,
         });
       }
     }
@@ -107,10 +111,13 @@ parseResult(text: string): {
   }
 
   hasAudio(): boolean {
-    return this.parseResult(this.result).some(item => item.icon === '🎧' && item.audioUrl);
+    return this.parseResult(this.result).some(
+      (item) => item.icon === '🎧' && item.audioUrl
+    );
   }
 
-  logout() {
-    this.auth.logout();
+  isLink(url: string): boolean {
+    // For now consider anything starting with http(s) as a link
+    return /^https?:\/\//.test(url);
   }
 }
