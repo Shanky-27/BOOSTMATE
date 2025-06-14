@@ -1,13 +1,13 @@
 {
   "name": "boostmate",
   "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+"scripts": {
+  "ng": "ng",
+  "start": "ng serve",
+  "build": "npx ng build",
+  "watch": "npx ng build --watch --configuration development",
+  "test": "npx ng test"
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.13",
