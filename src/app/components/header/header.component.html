@@ -1,0 +1,29 @@
+<header class="header">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="assets/logo.png" alt="BoostMate" width="32" />
+    BoostMate 🚀
+  </div>
+
+
+
+  <!-- User Area -->
+  <div class="user-section" *ngIf="user; else guestLinks">
+    <img
+      *ngIf="user.photoURL"
+      [src]="user.photoURL"
+      alt="Avatar"
+      class="avatar"
+    />
+    <span class="username">{{ user.displayName || user.email }}</span>
+    <button class="btn" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- Guest Login/Signup -->
+  <ng-template #guestLinks>
+    <div class="user-section">
+      <a href="/login" class="btn">Login</a>
+      <a href="/signup" class="btn">Sign Up</a>
+    </div>
+  </ng-template>
+</header>

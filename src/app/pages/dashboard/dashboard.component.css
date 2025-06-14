@@ -1,0 +1,72 @@
+.dashboard-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group input {
+  padding: 0.6rem;
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttons {
+  margin-bottom: 1.5rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button.logout {
+  background-color: #dc3545;
+}
+
+.loading {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: left;
+}
+
+.result-table th {
+  background-color: #f5f5f5;
+}
+
+.hashtag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 0.5rem;
+}
+
+.hashtag-pill {
+  background-color: #e0f7ff;
+  color: #007acc;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}

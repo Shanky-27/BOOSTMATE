@@ -1,0 +1,68 @@
+
+<div class="dashboard-container">
+  <h2>🚀 BoostMate Dashboard</h2>
+
+  <div class="input-group">
+    <label for="niche">Enter your niche</label>
+    <input
+      id="niche"
+      [(ngModel)]="niche"
+      placeholder="e.g., Travel, Fitness"
+      autocomplete="off"
+    />
+  </div>
+
+  <div class="buttons">
+    <button (click)="generateContent()" [disabled]="loading || !niche.trim()">
+      Generate Content
+    </button>
+    <button class="logout" (click)="logout()">Logout</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <span class="spinner"></span> Generating content, please wait...
+  </div>
+
+  <table *ngIf="result" class="result-table">
+    <thead>
+      <tr>
+        <th>Section</th>
+        <th>Description</th>
+        <th *ngIf="hasAudio()">Listen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of parseResult(result)">
+        <tr>
+          <td>{{ item.icon }} {{ item.section }}</td>
+          <td>
+            <!-- Captions block -->
+            <div *ngIf="item.icon === '✍'">
+              <p><strong>{{ item.title }}</strong></p>
+              <div class="hashtag-container">
+                <span *ngFor="let tag of item.hashtags" class="hashtag-pill">
+                  {{ tag }}
+                </span>
+              </div>
+            </div>
+
+            <!-- All other blocks -->
+            <div *ngIf="item.icon !== '✍'">
+              <strong *ngIf="item.title">{{ item.title }}:</strong> {{ item.text }}
+            </div>
+          </td>
+          <td>
+            <ng-container *ngIf="item.audioUrl; else noAudio">
+              <a [href]="item.audioUrl" target="_blank" rel="noopener noreferrer">
+                Listen on Spotify
+              </a>
+            </ng-container>
+            <ng-template #noAudio>
+              <span *ngIf="item.icon === '🎧'">—</span>
+            </ng-template>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,13 @@
+<div class="home-container">
+  <h1>🚀 Welcome to BoostMate</h1>
+  <p>Your personal assistant to go viral on social media</p>
+
+  <div *ngIf="user" class="user-info">
+    <img *ngIf="user.photoURL" [src]="user.photoURL" class="user-avatar" />
+    <p class="user-name">
+      Hello, {{ user.displayName || user.email }} 👋
+    </p>
+  </div>
+
+  <a href="/dashboard" class="btn-start">Go to Dashboard</a>
+</div>
