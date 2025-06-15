@@ -120,4 +120,16 @@ export class DashboardComponent {
     // For now consider anything starting with http(s) as a link
     return /^https?:\/\//.test(url);
   }
+  copied = false;
+copyToClipboard(text: string) {
+  navigator.clipboard.writeText(text).then(
+    () => {
+      this.copied = true;
+      alert("Copied to CLipboard")
+      setTimeout(() => (this.copied = false), 2000);
+    },
+    (err) => console.error('Copy failed: ', err)
+  );
+}
+
 }

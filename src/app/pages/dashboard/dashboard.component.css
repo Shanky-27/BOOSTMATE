@@ -148,3 +148,23 @@ button.logout:hover {
   font-size: 0.85rem;
   font-weight: 500;
 }
+.copy-btn {
+  margin-top: 8px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  background-color: #238636;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.copy-btn:hover {
+  background-color: #2ea043;
+}
+.copyable-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}

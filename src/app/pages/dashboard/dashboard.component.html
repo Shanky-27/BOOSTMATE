@@ -34,16 +34,31 @@
         <tr>
           <td>{{ item.icon }} {{ item.section }}</td>
           <td>
+            <!-- Captions -->
             <div *ngIf="item.icon === '✍'">
-              <p><strong>{{ item.title }}</strong></p>
+              <div class="copyable-block">
+                <p><strong>{{ item.title }}</strong></p>
+                <button class="copy-btn" (click)="copyToClipboard(item.title ?? '')">Copy</button>
+              </div>
+
               <div class="hashtag-container">
                 <span *ngFor="let tag of item.hashtags" class="hashtag-pill">
                   {{ tag }}
                 </span>
               </div>
             </div>
+
+            <!-- Formats, Posting Times, Audios -->
             <div *ngIf="item.icon !== '✍'">
-              <strong *ngIf="item.title">{{ item.title }}:</strong> {{ item.text }}
+              <div>
+                <strong *ngIf="item.title">{{ item.title }}:</strong> {{ item.text }}
+              </div>
+              <button
+                class="copy-btn"
+                (click)="copyToClipboard((item.title ? item.title + ': ' : ''))"
+              >
+                Copy
+              </button>
             </div>
           </td>
           <td>
